@@ -223,7 +223,7 @@ const Messenger = () => {
 
             {/* Xabarlar */}
             <div
-                className="md:w-2/3 w-full flex flex-col p-6 bg-gray-900 h-screen"
+                className="md:w-2/3 w-full flex flex-col p-6 bg-gray-900 md:h-[88.9vh] h-screen"
             >
                 {selectedUser ? (
                     <>
@@ -294,7 +294,7 @@ const Messenger = () => {
                                 <textarea
                                     className="border-none bg-transparent h-14 p-4 resize-none w-full placeholder-gray-400 focus:outline-none"
                                     rows="2"
-                                    placeholder="Xabar yozing..."
+                                    placeholder="yozing..."
                                     value={newMessage}
                                     onChange={(e) => setNewMessage(e.target.value)}
                                     onKeyDown={handleKeyDown}

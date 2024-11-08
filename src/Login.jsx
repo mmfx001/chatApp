@@ -7,6 +7,7 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
     const [isSignUp, setIsSignUp] = useState(false);
+    const [loading, setLoading] = useState(false);  // Loading holatini qo'shish
     const navigate = useNavigate();
     const formRef = useRef(null);
 
@@ -34,11 +35,13 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent form submission
+        setLoading(true);  // Loading holatini yoqish
         if (isSignUp) {
             await handleSignUp();
         } else {
             await handleLogin();
         }
+        setLoading(false);  // Loading holatini o'chirish
     };
 
     const handleLogin = async () => {
@@ -83,7 +86,6 @@ const Login = () => {
             } else {
                 setMessage('Hisob muvaffaqiyatli yaratildi.'); 
                 setIsSignUp(false); // Switch to login mode
-
                 clearMessage();
             }
         } catch (error) {
@@ -122,7 +124,7 @@ const Login = () => {
                     type="submit"
                     className={`w-full ${isSignUp ? 'bg-green-500 hover:bg-green-600' : 'bg-blue-500 hover:bg-blue-600'} text-white py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-opacity-50`}
                 >
-                    {isSignUp ? 'Ro‘yxatdan o‘tish' : 'Kirish'}
+                    {loading ? 'Loading...' : (isSignUp ? 'Ro‘yxatdan o‘tish' : 'Kirish')}
                 </button>
 
                 <div className='flex gap-2 mt-6 justify-center'>
